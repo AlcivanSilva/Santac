@@ -1,0 +1,66 @@
+<ui:composition template="/WEB-INF/templates/templateIndex.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+        
+    <ui:define name="title">IFRN</ui:define>
+    <ui:define name="centerIndex">
+        <div id="formulario">
+                <legend>
+                    <h4>
+                        FORMULÁRIO DE NORMALIZAÇÃO
+                    </h4>
+                </legend>
+            <h:form id="messages" enctype="multipart/form-data">
+                            <p:panelGrid columns="4">
+                            <p>USUÁRIO(A):</p>
+                            <p:inputText value="#{cadastroBean.formulario.usuario}" />
+                               
+                            <p>MATRÍCULA:</p>
+                            <p:inputText value="#{cadastroBean.formulario.matricula}" />
+                              
+                            <p>E-MAIL:</p>
+                            <p:inputText value="#{cadastroBean.formulario.email}" />
+                              
+                            <p>CONTATO:</p>
+                            <p:inputMask mask="(99) 99999-9999" value="#{cadastroBean.formulario.contato}"/>
+                            
+                            <p>TÍTULO:</p>
+                            <p:inputText value="#{cadastroBean.formulario.titulo}" />
+                               
+                            <p>ORIENTADOR(A):</p>
+                            <p:inputText value="#{cadastroBean.formulario.orientador}" />
+                            
+                            <p>CURSO:</p>
+                            <p:inputText value="#{cadastroBean.formulario.curso}" />
+                              
+                                <h4>
+                                    <label class="tpDoc">TIPOS DE DOCUMENTO:</label>
+                                </h4>
+                             
+                                <h4>NÍVEL MÉDIO</h4>
+                                <p:selectOneMenu value="#{cadastroBean.formulario.medio}">
+                                        <f:selectItem itemLabel="NÃO SELECIONADO" itemDisabled="true"/>
+                                        <f:selectItem itemValue="TCC" itemLabel="TCC" />
+                                        <f:selectItem itemValue="RELATORIO" itemLabel="RELATORIO" />
+                                    </p:selectOneMenu>
+                                
+                                <h4>NÍVEL SUPERIOR</h4>
+                                <p:selectOneMenu value="#{cadastroBean.formulario.superior}">
+                                        <f:selectItem itemLabel="NÃO SELECIONADO" itemDisabled="true"/>
+                                        <f:selectItem itemValue="TCC/DISSERTACAO/TESE" itemLabel="TCC/DISSERTACAO/TESE" />
+                                        <f:selectItem itemValue="RELATORIO DE ESTAGIO" itemLabel="RELATORIO DE ESTAGIO" />
+                                        <f:selectItem itemValue="FICHA CATALOGRAFICA" itemLabel="FICHA CATALOGRAFICA" />
+                                        <f:selectItem itemValue="OUTROS" itemLabel="OUTROS" />
+                                    </p:selectOneMenu> 
+                                 <p:fileUpload allowTypes="/(\.|\/)(doc|docx)$/" value="#{cadastroBean.file}" mode="simple"   update="messages"/>
+                                 <p:commandButton value="Enviar" action="#{cadastroBean.Cadastro()}" ajax="false"/>
+
+                                 </p:panelGrid>
+            </h:form>
+           </div>
+                 <p:growl id="message" showDetail="true" /> 
+    </ui:define>
+</ui:composition>

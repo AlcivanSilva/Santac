@@ -1,0 +1,59 @@
+<ui:composition template="/WEB-INF/templates/templateBasico.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+       <ui:define name="title">Trabalhos</ui:define>
+       <ui:define name="center">
+
+           <h:form>
+           <p:dataTable var="ativa" value="#{bibliotecarioBean.listaSolicitacoes}">
+                <f:facet name="header" ><p:outputLabel value="Trabalhos" /></f:facet>
+                <p:column style="width:16px">
+                <p:rowToggler />
+                </p:column>
+                    <p:column headerText="Usuario">
+                        <f:facet name="header" ><p:outputLabel value="Usuario" /></f:facet>
+                        <p:outputLabel value="#{ativa.nome}" />
+                    </p:column>
+                
+                    <p:column>
+                        <f:facet name="header"><p:outputLabel value="Matricula" /></f:facet>
+                        <p:outputLabel value="#{ativa.matricula}"/>
+                    </p:column>
+                
+                
+                    <p:column>
+                        <f:facet name="header"><p:outputLabel value="E-mail" /></f:facet>
+                        <p:outputLabel value="#{ativa.email}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header"><p:outputLabel value="Contato" /></f:facet>
+                        <p:outputLabel value="#{ativa.contato}"/>
+                    </p:column>
+                <p:column>
+                    <f:facet name="header"><p:outputLabel value="Permissão"/></f:facet>
+                    <p:outputLabel value="#{ativa.permissao}"/>
+                </p:column>
+                    
+                    <p:rowExpansion>
+                    <div style="width: 0px;height: 0px;">
+                            <h:inputHidden value="#{ativa.idUsuario}"/>
+                        </div>
+                    
+                    
+                    <p:commandButton value="Ativar"   action="#{bibliotecarioBean.ativar(ativa)}"
+                                       style="margin-left: 16.7%">
+                        <p:confirm header="Confirmação" message="Deseja Realmente Ativar?"/>
+                                          
+                    </p:commandButton>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                        <p:commandButton value="Sim" ajax="false" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="Não" ajax="false" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                   </p:rowExpansion>
+        </p:dataTable>
+               </h:form>
+    </ui:define>
+</ui:composition>      

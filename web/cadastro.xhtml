@@ -1,0 +1,65 @@
+<ui:composition template="/WEB-INF/templates/templateBasico.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+        <ui:define name="title">Adminstrador</ui:define>
+        <ui:define name="center">
+                
+            <h:form id="message2">
+                
+                <p:growl id="message" showDetail="true"/>
+                <legend>
+                    <p>CADASTRO DE USUÁRIO</p>                
+                </legend>
+                <p:panelGrid columns="4">                    
+
+                    <p>NOME:</p>
+                    <p:inputText value="#{bibliotecarioBean.bibliotecario.nome}" />
+
+                    <p>MATRÍCULA:</p>
+                    <p:inputText value="#{bibliotecarioBean.bibliotecario.matricula}" />
+
+                    <p>E-MAIL:</p>
+                    <p:inputText value="#{bibliotecarioBean.bibliotecario.email}" />
+
+                    <p>CONTATO:</p>
+                    <p:inputMask mask="(99) 99999-9999" value="#{bibliotecarioBean.bibliotecario.contato}"/>
+                    
+
+                    <p>SENHA:</p>
+                    <p:password value="#{bibliotecarioBean.bibliotecario.senha}"/>
+                    
+                    
+                    <p>PERMISSÃO:</p>
+                    
+                    <p:selectOneMenu value="#{bibliotecarioBean.bibliotecario.permissao}">
+                        <f:selectItem itemLabel="BIBLIOTECÁRIO" itemValue="BIBLIOTECARIO"/>
+                        <f:selectItem itemLabel="ADMINISTRADOR" itemValue="ADMINISTRADOR"/>
+                    </p:selectOneMenu>     
+                    
+                </p:panelGrid>
+                <p:panelGrid columns="8" >
+                    <p:commandLink title="Cadastrar" action="#{bibliotecarioBean.cadastro2()}"
+                                   actionListener="#{bibliotecarioBean.clicarBotaoCadastraUsuario()}"
+                                   update="message2" >
+                        <p:confirm header="Confirmação" message="Deseja Realmente Cadastrar?"
+                                   icon="ui-icon-alert" />
+                        <p:graphicImage value="/img/Create.png"/>
+                    
+                    </p:commandLink>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        
+                    </p:confirmDialog>
+                    
+                                        
+                </p:panelGrid>    
+                               
+               </h:form>                 
+            
+            
+        </ui:define>
+</ui:composition>

@@ -1,0 +1,30 @@
+<ui:composition template="/WEB-INF/templates/templateBasico.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+          
+    <ui:define name="title">Contato</ui:define>
+    <ui:define name="center">
+        <h:form>
+            <p:panel style="background-color: #333333">
+                <p:fieldset>
+                    <p:outputLabel value="Equipe de Desenvolvimento" /><br /><br />
+                    <p:outputLabel value="Alcivan Silva (84) 98143-2287" /><br />
+                    <p:outputLabel value="alcivansilva7@gmail.com" /><br /><br />
+                    <p:outputLabel value="Hugo Pablo (84) 99126-1979" /><br />
+                    <p:outputLabel value="pablo-s_fictions@outlook.com" /><br /><br />
+                    <p:outputLabel value="Suporte" /><br />
+                    <p:outputLabel value="(84) 3228-5134" /><br />
+                    <p:outputLabel value="WhatsApp: (84) 98143-2287" />
+                </p:fieldset>
+            </p:panel>
+                     <p:stack icon="/img/stack.png" expanded="true">
+                            <p:menuitem value="Sair" icon="/img/Exit.png" action="#{bibliotecarioBean.Logout()}"/>
+                            <p:menuitem value="Home" icon="/img/Home.png" outcome="Admin.xhtml"/>
+                    </p:stack>
+        </h:form>
+    </ui:define>
+    
+</ui:composition>
